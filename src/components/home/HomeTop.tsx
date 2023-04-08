@@ -25,7 +25,7 @@ function HomeTop({downloadLink}:{downloadLink: number})
                     rotate-180 
                     lg:rotate-0 
                     lg:opacity-100 
-                "  src="public/mascot.png" alt="Mascot" />
+                "  src="mascot.png" alt="Mascot" />
             </div>
 
 
