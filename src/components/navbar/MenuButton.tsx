@@ -13,7 +13,7 @@ function MenuButton({ isMenuClicked, setIsMenuClicked }: { isMenuClicked: boolea
                     {...buttonProps} 
                 >
                 <img
-                    src="public/navbar/menu-bar.svg"
+                    src="navbar/menu-bar.svg"
                     alt="Menu Bar Logo"
                     className="z-[10] h-8 object-contain object-center"
                 />
