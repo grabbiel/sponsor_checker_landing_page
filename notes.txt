@@ -1,0 +1,8 @@
+                <img className="
+                w-60 
+                h-64
+                absolute 
+                opacity-10 
+                lg:opacity-100 
+                lg:static lg:h-full
+                " src="src/assets/mascot.png" alt="Mascot" />
