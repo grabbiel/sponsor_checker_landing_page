@@ -1,8 +1,9 @@
 
 import { ReactElement, useEffect, useState } from "react";
-function useDownloadButton(): [Object, boolean]
+function useDownloadButton(): [Object, boolean, boolean]
 {
     const [isHovered, setIsHovered] = useState(false);
+    const [isClicked, setIsClicked] = useState(false);
 
     const handleMouseOver = () => {
         setIsHovered(true);
@@ -12,18 +13,23 @@ function useDownloadButton(): [Object, boolean]
         setIsHovered(false);
     }
 
+    const handleClick = () => {
+        setIsClicked(!isClicked);
+    }
+
     const buttonProps = {
         onMouseOver: handleMouseOver,
         onMouseLeave: handleMouseOut,
-        className: 'button w-full py-7 font-[Figtree] font-bold px-10'
+        onClick: handleClick,
+        className: 'button w-full font-[Figtree] font-bold px-10 py-7'
     };
 
-    return [buttonProps, isHovered]; 
+    return [buttonProps, isHovered, isClicked]; 
 }
 
 function DownloadButton({downloadLink}:{downloadLink: number}): ReactElement<HTMLButtonElement>
 {
-    const [buttonProps, isHovered] = useDownloadButton();
+    const [buttonProps, isHovered, isClicked] = useDownloadButton();
     const [goURL, setURL] = useState("https://chrome.google.com/webstore/detail/h1b-sponsor-checker/mcnljenmincmifienefinhkgkbiicccp");
 
     useEffect(()=>{
@@ -42,10 +48,10 @@ function DownloadButton({downloadLink}:{downloadLink: number}): ReactElement<HTM
 
     return (
         <div className="bg-[#FFF2E8] rounded-[10px] outline-dotted shadow-black shadow-md hover:shadow-lg hover:shadow-black duration-150 
-        w-60 xsmob:w-80 lg:max-w-80">
-            {[<button {...buttonProps}>
-                <a href={goURL} target="_blank">Add to your browser</a>
-            </button>]}
+        w-60 xsmob:w-80 lg:max-w-80 ">
+            <a href={goURL} target="_blank">
+                {[<button {...buttonProps}> Add to your browser </button>]}
+            </a>
         </div>
     );
 }
